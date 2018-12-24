@@ -7,9 +7,30 @@
   "devDependencies": {
     "eslint": "^5.11.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0"
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "lint-staged": "^8.1.0",
+    "pre-commit": "^1.2.2"
   },
   "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
     "robotjs": "^0.5.1"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "lint:js": "eslint ./src",
+    "lint-staged": "lint-staged"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "airbnb-base",
+      "prettier"
+    ]
+  },
+  "pre-commit": "lint-staged",
+  "lint-staged": {
+    "*.js": "eslint"
   }
 }
