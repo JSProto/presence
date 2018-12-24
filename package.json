@@ -1,0 +1,15 @@
+{
+  "name": "robot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Jake Arefyev <jake.arefyev@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^5.11.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  },
+  "dependencies": {
+    "robotjs": "^0.5.1"
+  }
+}
