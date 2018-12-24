@@ -2,7 +2,7 @@
   "name": "robot",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Jake Arefyev <jake.arefyev@gmail.com>",
+  "author": "Jake",
   "license": "MIT",
   "devDependencies": {
     "eslint": "^5.11.0",
