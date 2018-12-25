@@ -4,33 +4,24 @@
 
 # init project
 
-    npm i -g yarn
-    yarn init
-    yarn add -D eslint
-    yarn add -D eslint-config-airbnb-base
-    yarn add -D eslint-plugin-import
-    yarn add -D eslint-config-prettier
-    yarn add -D pre-commit
-    yarn add -D lint-staged
+    npm i -g flow-typed
 
-# package.json
-
-```
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "airbnb-base",
-      "prettier"
-    ]
-  },
-  "pre-commit": "lint-staged",
-  "lint-staged": {
-    "*.js": "eslint"
-  }
-```
+    npm init
+    npm i -D eslint
+    npm i -D eslint-plugin-import
+    npm i -D eslint-plugin-flowtype
+    npm i -D eslint-config-airbnb-base
+    npm i -D eslint-config-prettier
+    npm i -D pre-commit
+    npm i -D lint-staged
+    npm i -D babel-eslint
+    npm i -D babel-preset-flow
+    npm i -D flow-bin
+    npm i -D source-map-support
+    npm i -D husky
 
 <!--
-yarn add babel-core
-yarn add babel-preset-env
-yarn add babel-cli
+npm i babel-core
+npm i babel-preset-env
+npm i babel-cli
 -->
