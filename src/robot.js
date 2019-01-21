@@ -2,19 +2,27 @@
 
 const robot = require('robotjs');
 
-robot.setMouseDelay(2);
+let count = 1;
+const delay = 55; // seconds
+const between = (from, to) => {
+    const hour = (new Date).getHours();
+    const valid = hour > from && hour < to;
+    console.log('timestamp[%d]: %s %s', ++count, valid, Date.now());
+    return valid;
+}
 
-const delay = (ms = 1000) => new Promise(resolve => setTimeout(resolve, ms));
+
+const wait = (ms = 1000) => new Promise(resolve => setTimeout(resolve, ms));
 
 const job = ms =>
-  async function _(fn) {
-    await fn();
-    await delay(ms);
-    _(fn);
-  };
+    async function _(fn) {
+        await fn();
+        await wait(ms);
+        _(fn);
+    };
 
-const run = job(55 * 1000);
-run(() => robot.mouseClick());
+const run = job(delay * 1000);
+run(() => between(10, 18) && robot.mouseClick());
 
 // class Mouse {
 //     static async click(){
