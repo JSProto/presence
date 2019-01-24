@@ -1,11 +1,9 @@
 [ignore]
 <PROJECT_ROOT>/.history/.*
 <PROJECT_ROOT>/dist/.*
-.*/node_modules/.*
 
 
 [include]
-<PROJECT_ROOT>/node_modules/robotjs
 
 [libs]
 flow-typed
