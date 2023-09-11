@@ -1,16 +1,29 @@
-// @flow
+/* eslint-disable no-return-assign */
 
 const robot = require('robotjs');
+const ioHook = require('iohook');
 
-let count = 1;
-const delay = 55; // seconds
-const between = (from, to) => {
-    const hour = (new Date).getHours();
-    const valid = hour > from && hour < to;
-    console.log('timestamp[%d]: %s %s', ++count, valid, Date.now());
+ioHook.start();
+
+let lastUsageTime = Date.now();
+ioHook.on('keydown', () => (lastUsageTime = Date.now()));
+ioHook.on('mousemove', () => (lastUsageTime = Date.now()));
+
+// ioHook.on('keydown', e => console.log(e));
+
+const lastUsage = (min = 100, max = 900) => {
+    const idleTime = (Date.now() - lastUsageTime) / 1000;
+    const click = idleTime > min && idleTime < max;
+    console.log('idle time:', idleTime, click);
+    return click;
+};
+
+const betweenHours = (from, to) => {
+    const hour = new Date().getHours();
+    const valid = hour >= from && hour <= to;
+    // console.log('timestamp: %s %s', valid, hour);
     return valid;
-}
-
+};
 
 const wait = (ms = 1000) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -21,8 +34,11 @@ const job = ms =>
         _(fn);
     };
 
-const run = job(delay * 1000);
-run(() => between(10, 18) && robot.mouseClick());
+const run = job(55 * 1000);
+run(() => betweenHours(9, 19) && lastUsage(55, 900 * 2) && robot.mouseClick());
+
+const logger = job(10 * 1000);
+logger(() => betweenHours(10, 16) && lastUsage(55, 900));
 
 // class Mouse {
 //     static async click(){

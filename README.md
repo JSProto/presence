@@ -25,3 +25,13 @@ npm i babel-core
 npm i babel-preset-env
 npm i babel-cli
 -->
+# setup osx
+```sh
+sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db 'PRAGMA table_info(access)'
+
+sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db 'select * from access'
+
+sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db 'select service, client, allowed from access WHERE service="kTCCServiceAccessibility" AND client LIKE "%SessionInspector"'
+
+sudo sqlite3 /Library/Application\ Support/com.apple.TCC/TCC.db 'UPDATE access SET allowed=0 WHERE service="kTCCServiceAccessibility" AND client LIKE "%SessionInspector"'
+```
